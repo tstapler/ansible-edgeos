@@ -1,2 +1,12 @@
 ---
 # tasks file for ansible-edgeos
+- name: Configure the remote device
+  vyos_config:
+    lines:
+      - set system package repository wheezy components 'main contrib non-free'
+      - set system package repository wheezy distribution wheezy
+      - set system package repository wheezy url http://http.us.debian.org/debian
+
+- name: Update apt-cache
+  apt: update_cache=yes
+
